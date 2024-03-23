@@ -1,0 +1,19 @@
+pipeline {
+    agent {
+        docker {
+            image 'mcr.microsoft.com/mssql/server:2019-latest'
+            args '-p 1433:1433 -e ACCEPT_EULA=Y -e SA_PASSWORD=YourStrong!Passw0rd'
+        }
+    }
+    
+    stages {
+        stage('Install SQL Server') {
+            steps {
+                sh '''
+                    # Command to install SQL Server can go here if needed
+                    # For example, you may want to run SQL scripts to set up databases or users
+                '''
+            }
+        }
+    }
+}
